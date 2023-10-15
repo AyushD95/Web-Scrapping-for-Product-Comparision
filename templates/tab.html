@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompareHub</title>
+    <style>
+        body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url('../static/copy2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+  }
+
+
+header {
+    background-color: #0078b7;
+    height: 80px;
+    color: #fff;
+
+    padding: 20px;
+
+}
+
+header h1 {
+    font-family:monospace ;
+    padding-top: 15px;
+    text-align: left;
+    font-size: 49px;
+}
+
+
+.search input[type=text] {
+    float: right;
+    padding: 6px;
+    border:none;
+
+    margin-top: -18px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+
+.categ {
+    height: 40px;
+}
+nav ul
+{
+    margin-top: 10px;
+    list-style-type: none;
+}
+
+nav li {
+    margin: 10px auto;
+    padding-left:35px ;
+    display: inline;
+    margin-left: 50px;
+
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.PSearch{
+
+    margin-top: 8%;
+    margin-left: 24%;
+
+}
+
+.First {
+    width: 20%;
+    height: 60px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 3px 60px 0 80px;
+
+}
+
+.Fourth {
+    width: 20%;
+    margin-left: 4%;
+    height: 60px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 3px 60px 0 80px;
+}
+.Second {
+   margin-left: 4%;
+    width: 20%;
+    height: 60px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 3px 60px 0 80px;
+}
+
+.two {
+
+
+margin-top: 3%;
+
+}
+
+.Third {
+
+    width: 20%;
+    height: 60px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 3px 60px 0 80px;
+}
+
+
+
+.compare-button {
+    width: 170px;
+    height: 40px;
+    padding: 0;
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 44px;
+
+
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto;
+
+    margin-top: 2.5%;
+    cursor: pointer;
+}
+
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:not(.active)::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease;
+}
+
+/* Show the red box on hover */
+.nav-item:hover::after {
+    opacity: 1;
+}
+
+
+/* Style the red box for the "active" class */
+.nav-item.active {
+    position: relative;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust the height as needed */
+    background-color: red; /* Red color */
+    opacity: 1; /* Initially visible for the "active" item */
+}
+
+
+footer {
+
+    margin-top: 9.15%;
+    background-color: #3e3e3e;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+    </style>
+ 
+</head>
+<body>
+    <header>
+        <h1>CompareHub.com</h1>
+        <div class="search">
+        <input class="search" type="text" placeholder="Gadgets Search..">
+    </div>
+
+    </header>
+
+
+    
+
+    <main>
+        <div class="categ">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="nav-item" data-target="laptop"><img class="img" src="/static/laptop.png" alt="Laptop"></a></li>
+                    <li><a href="/mob.html" class="nav-item" data-target="mobile"><img class="img" src="../static/smartphone-call.png" alt="Mobile"></a></li>
+                    <li><a href="/tab.html" class="nav-item active" data-target="tablet"><img class="img" src="../static/tablet.png" alt="Tablet"></a></li>
+
+                </ul>
+            </nav>
+        </div>
+        
+  
+        <div class="PSearch">
+            <div class="one">
+             <input  class="First" maxlength="100" type="text" placeholder="Enter name of tablet" >
+             <input class="Second" maxlength="100" type="text" placeholder="Enter name of tablet" >
+         </div> 
+             
+         <div class="two">
+             <input class="Third" maxlength="100" type="text" placeholder="Enter name of tablet" >
+             <input class="Fourth" maxlength="100" type="text" placeholder="Enter name of tablet" >
+         </div>  
+         </div>
+         
+         <button class="compare-button" onclick="compareTablets()">Compare</button>
+
+        <script>
+
+            function compareTablets() {
+    // Get the values of the tablet names entered by the user
+    const tablet1Name = document.querySelector('.First').value;
+    const tablet2Name = document.querySelector('.Second').value;
+    const tablet3Name = document.querySelector('.Third').value;
+    const tablet4Name = document.querySelector('.Fourth').value;
+
+    console.log('tablet1Name:', tablet1Name);
+    console.log('tablet2Name:', tablet2Name);
+    console.log('tablet3Name:', tablet3Name);
+    console.log('tablet4Name:', tablet4Name);
+
+    // Check the number of tablets entered
+    if (tablet1Name && tablet2Name && !tablet3Name && !tablet4Name) {
+        // Redirect to the comparison page for 2 tablets with tablet1 and tablet2 names as query parameters
+        window.location.href = `compare2T.html?tablet1=${tablet1Name}&tablet2=${tablet2Name}`;
+    } else if (tablet1Name && tablet2Name && tablet3Name && !tablet4Name) {
+        // Redirect to the comparison page for 3 tablets with tablet1, tablet2, and tablet3 names as query parameters
+        window.location.href = `compare3T.html?tablet1=${tablet1Name}&tablet2=${tablet2Name}&tablet3=${tablet3Name}`;
+    } else if (tablet1Name && tablet2Name && tablet3Name && tablet4Name) {
+        // Redirect to the comparison page for 4 tablets with tablet1, tablet2, tablet3, and tablet4 names as query parameters
+        window.location.href = `compare4T.html?tablet1=${tablet1Name}&tablet2=${tablet2Name}&tablet3=${tablet3Name}&tablet4=${tablet4Name}`;
+    } else {
+        // Handle the case when no tablets are entered or other conditions
+        alert('Please enter at least two and up to four tablet names for comparison.');
+    }
+}
+
+        </script>
+
+   </main>
+   <footer>
+    <p>&copy; Copyright CompareHub Limited 2023. All rights reserved.</p>
+</footer>
+  
+</body>
+</html>

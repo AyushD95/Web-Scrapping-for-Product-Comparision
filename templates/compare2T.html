@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompareHub - Compare 2 Laptops</title>
+    <style>
+
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #0078b7;
+    height: 80px;
+    color: #fff;
+
+    padding: 20px;
+
+}
+
+
+
+header h1 {
+    font-family:monospace ;
+    padding-top: 15px;
+    text-align: left;
+    font-size: 49px;
+}
+
+
+.search input[type=text] {
+    float: right;
+    padding: 6px;
+    border:none;
+
+    margin-top: -18px;
+    margin-right: 16px;
+    font-size: 17px;
+
+  }
+
+  .heading {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden; /* Hide overflowed content */
+    font-family: sans-serif;
+    color: #cb3a27;
+    font-size: 15px;
+}
+
+
+
+
+.vs {
+
+
+
+    margin: 0 20px;
+}
+
+
+
+
+  footer {
+
+    margin-top: 9.15%;
+    background-color: #3e3e3e;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+
+table{
+    margin-top: 3%;
+    margin-left: 15.2%;
+    margin-right: 20%;
+    width: 65%;
+    height: 100%;
+}
+
+
+
+
+table{
+
+    border-collapse:collapse;
+    text-align:center;
+font-family: sans-serif;
+font-weight: 400;
+}
+
+
+.hed{font-family: Titillium,sans-serif;
+    padding-left: 7px;
+    padding-top: 5px;
+
+    background-color: #f1f1f1;
+    color: #cb3a27;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+  border: solid;
+    border-width: 1px 1px ;
+    width: 100%;
+    text-align: left;
+    border-color: rgb(207, 207, 207);
+    text-transform: capitalize;
+    background-color: #f1f1f1;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.spec{
+    text-align: left;
+    font-size: 16px;
+    padding-top:5px ;
+    padding-bottom: 5px;
+    width:19%;
+    padding-left: 7px;
+
+}
+
+
+.img {
+
+
+      display: inline;
+    padding-left: 100px;
+    margin-left: 33%;
+
+
+}
+
+.con{
+
+    padding-top: 3%;
+    padding-right: 229px ;
+       width: 136px;
+    height: 143px;
+
+    margin: auto;
+}
+
+
+td{  padding-left: 18px;
+    padding-right: 18px;
+     padding-top: 18px;
+     padding-bottom: 18px;
+     width: 27%;
+    border-color: #c9c9c9;
+}
+
+
+
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>CompareHub.com</h1>
+ 
+        <div class="search">
+            <input class="search" type="text" placeholder="Gadgets Search..">
+        </div>
+    
+    </header>
+
+    <main>
+        <diV class="heading">
+<h2 class="lap" id="laptop1Name">{{ tablet_data[0][0] }}</h2>
+ <h2 class="vs">Vs</h2>
+ <h2 class="lap" id="laptop2Name">{{ tablet_data[1][0] }}</h2>
+ </diV>
+
+<div class="img">
+
+<img class="con" src="{{ tablet_data[0][52] }}">
+
+<img class="con" src="{{ tablet_data[1][52] }}">
+
+
+</div>
+
+
+
+<table border="1">
+    <!-- General Info -->
+    <tr>
+        <td colspan="3" class="hed">General Info</td>
+    </tr>
+    <tr>
+        <td class="spec">Tablet Name</td>
+        <td>{{ tablet_data[0][0] }}</td>
+        <td>{{ tablet_data[1][0] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Brand</td>
+        <td>{{ tablet_data[0][1] }}</td>
+        <td>{{ tablet_data[1][1] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Model</td>
+        <td>{{ tablet_data[0][2] }}</td>
+        <td>{{ tablet_data[1][2] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Operating System</td>
+        <td>{{ tablet_data[0][3] }}</td>
+        <td>{{ tablet_data[1][3] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Custom UI</td>
+        <td>{{ tablet_data[0][4] }}</td>
+        <td>{{ tablet_data[1][4] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Launch Date</td>
+        <td>{{ tablet_data[0][5] }}</td>
+        <td>{{ tablet_data[1][5] }}</td>
+    </tr>
+
+    <!-- Battery -->
+    <tr>
+        <td colspan="3" class="hed">Battery</td>
+    </tr>
+    <tr>
+        <td class="spec">Battery Type</td>
+        <td>{{ tablet_data[0][6] }}</td>
+        <td>{{ tablet_data[1][6] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">User Replaceable Battery</td>
+        <td>{{ tablet_data[0][7] }}</td>
+        <td>{{ tablet_data[1][7] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Quick Charging</td>
+        <td>{{ tablet_data[0][8] }}</td>
+        <td>{{ tablet_data[1][8] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">USB Type-C</td>
+        <td>{{ tablet_data[0][9] }}</td>
+        <td>{{ tablet_data[1][9] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Battery Capacity</td>
+        <td>{{ tablet_data[0][10] }}</td>
+        <td>{{ tablet_data[1][10] }}</td>
+    </tr>
+
+    <!-- Camera -->
+    <tr>
+        <td colspan="3" class="hed">Camera</td>
+    </tr>
+    <tr>
+        <td class="spec">Camera Settings</td>
+        <td>{{ tablet_data[0][11] }}</td>
+        <td>{{ tablet_data[1][11] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Camera Features</td>
+        <td>{{ tablet_data[0][12] }}</td>
+        <td>{{ tablet_data[1][12] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Video Recording</td>
+        <td>{{ tablet_data[0][13] }}</td>
+        <td>{{ tablet_data[1][13] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Shooting Modes</td>
+        <td>{{ tablet_data[0][14] }}</td>
+        <td>{{ tablet_data[1][14] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Camera Resolution</td>
+        <td>{{ tablet_data[0][15] }}</td>
+        <td>{{ tablet_data[1][15] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Autofocus</td>
+        <td>{{ tablet_data[0][16] }}</td>
+        <td>{{ tablet_data[1][16] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Flash</td>
+        <td>{{ tablet_data[0][17] }}</td>
+        <td>{{ tablet_data[1][17] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Image Resolution</td>
+        <td>{{ tablet_data[0][18] }}</td>
+        <td>{{ tablet_data[1][18] }}</td>
+    </tr>
+
+    <!-- Design -->
+    <tr>
+        <td colspan="3" class="hed">Design</td>
+    </tr>
+    <tr>
+        <td class="spec">Width</td>
+        <td>{{ tablet_data[0][19] }}</td>
+        <td>{{ tablet_data[1][19] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Height</td>
+        <td>{{ tablet_data[0][20] }}</td>
+        <td>{{ tablet_data[1][20] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Weight</td>
+        <td>{{ tablet_data[0][21] }}</td>
+        <td>{{ tablet_data[1][21] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Thickness</td>
+        <td>{{ tablet_data[0][22] }}</td>
+        <td>{{ tablet_data[1][22] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Colors</td>
+        <td>{{ tablet_data[0][23] }}</td>
+        <td>{{ tablet_data[1][23] }}</td>
+    </tr>
+
+    <!-- Display -->
+    <tr>
+        <td colspan="3" class="hed">Display</td>
+    </tr>
+    <tr>
+        <td class="spec">Screen Protection</td>
+        <td>{{ tablet_data[0][24] }}</td>
+        <td>{{ tablet_data[1][24] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Screen Size</td>
+        <td>{{ tablet_data[0][25] }}</td>
+        <td>{{ tablet_data[1][25] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Display Type</td>
+        <td>{{ tablet_data[0][26] }}</td>
+        <td>{{ tablet_data[1][26] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Touch Screen</td>
+        <td>{{ tablet_data[0][27] }}</td>
+        <td>{{ tablet_data[1][27] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Pixel Density</td>
+        <td>{{ tablet_data[0][28] }}</td>
+        <td>{{ tablet_data[1][28] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Screen to Body Ratio</td>
+        <td>{{ tablet_data[0][29] }}</td>
+        <td>{{ tablet_data[1][29] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Screen Resolution</td>
+        <td>{{ tablet_data[0][30] }}</td>
+        <td>{{ tablet_data[1][30] }}</td>
+    </tr>
+
+    <!-- Multimedia -->
+    <tr>
+        <td colspan="3" class="hed">Multimedia</td>
+    </tr>
+    <tr>
+        <td class="spec">Fm Radio</td>
+        <td>{{ tablet_data[0][31] }}</td>
+        <td>{{ tablet_data[1][31] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Audio Features</td>
+        <td>{{ tablet_data[0][32] }}</td>
+        <td>{{ tablet_data[1][32] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Audio Jack</td>
+        <td>{{ tablet_data[0][33] }}</td>
+        <td>{{ tablet_data[1][33] }}</td>
+    </tr>
+
+    <!-- Storage -->
+    <tr>
+        <td colspan="3" class="hed">Storage</td>
+    </tr>
+    <tr>
+        <td class="spec">Expandable Memory</td>
+        <td>{{ tablet_data[0][34] }}</td>
+        <td>{{ tablet_data[1][34] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Internal Memory</td>
+        <td>{{ tablet_data[0][35] }}</td>
+        <td>{{ tablet_data[1][35] }}</td>
+    </tr>
+
+    <!-- Network & Connectivity -->
+    <tr>
+        <td colspan="3" class="hed">Network & Connectivity</td>
+    </tr>
+    <tr>
+        <td class="spec">Network Support</td>
+        <td>{{ tablet_data[0][36] }}</td>
+        <td>{{ tablet_data[1][36] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">USB Connectivity</td>
+        <td>{{ tablet_data[0][37] }}</td>
+        <td>{{ tablet_data[1][37] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">WiFi</td>
+        <td>{{ tablet_data[0][38] }}</td>
+        <td>{{ tablet_data[1][38] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Voice Calling</td>
+        <td>{{ tablet_data[0][39] }}</td>
+        <td>{{ tablet_data[1][39] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">VoLTE</td>
+        <td>{{ tablet_data[0][40] }}</td>
+        <td>{{ tablet_data[1][40] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Bluetooth</td>
+        <td>{{ tablet_data[0][41] }}</td>
+        <td>{{ tablet_data[1][41] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">NFC</td>
+        <td>{{ tablet_data[0][42] }}</td>
+        <td>{{ tablet_data[1][42] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">WiFi Features</td>
+        <td>{{ tablet_data[0][43] }}</td>
+        <td>{{ tablet_data[1][43] }}</td>
+    </tr>
+
+    <!-- Performance -->
+    <tr>
+        <td colspan="3" class="hed">Performance</td>
+    </tr>
+    <tr>
+        <td class="spec">Architecture</td>
+        <td>{{ tablet_data[0][44] }}</td>
+        <td>{{ tablet_data[1][44] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Processor</td>
+        <td>{{ tablet_data[0][45] }}</td>
+        <td>{{ tablet_data[1][45] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Graphics</td>
+        <td>{{ tablet_data[0][46] }}</td>
+        <td>{{ tablet_data[1][46] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">RAM</td>
+        <td>{{ tablet_data[0][47] }}</td>
+        <td>{{ tablet_data[1][47] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Chipset</td>
+        <td>{{ tablet_data[0][48] }}</td>
+        <td>{{ tablet_data[1][48] }}</td>
+    </tr>
+
+    <!-- Smart TV Features -->
+    <tr>
+        <td class="spec">Smart TV Camera</td>
+        <td>{{ tablet_data[0][49] }}</td>
+        <td>{{ tablet_data[1][49] }}</td>
+    </tr>
+
+    <!-- Special Features -->
+    <tr>
+        <td colspan="3" class="hed">Special Features</td>
+    </tr>
+    <tr>
+        <td class="spec">Fingerprint Sensor</td>
+        <td>{{ tablet_data[0][50] }}</td>
+        <td>{{ tablet_data[1][50] }}</td>
+    </tr>
+    <tr>
+        <td class="spec">Other Sensors</td>
+        <td>{{ tablet_data[0][51] }}</td>
+        <td>{{ tablet_data[1][51] }}</td>
+    </tr>
+</table>
+
+
+
+
+
+    </main>
+    <footer>
+        <p>&copy; Copyright CompareHub Limited 2023. All rights reserved.</p>
+    </footer>
+   
+
+
+</body>
+</html>
