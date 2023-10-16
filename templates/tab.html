@@ -81,7 +81,7 @@ nav li {
 }
 
 .First {
-    width: 20%;
+    width: 40%;
     height: 60px;
     background-color: #f5f5f5;
     border: none;
@@ -95,8 +95,8 @@ nav li {
 }
 
 .Fourth {
-    width: 20%;
-    margin-left: 4%;
+    width: 40%;
+    margin-left: -25%;
     height: 60px;
     background-color: #f5f5f5;
     border: none;
@@ -108,8 +108,8 @@ nav li {
     padding: 3px 60px 0 80px;
 }
 .Second {
-   margin-left: 4%;
-    width: 20%;
+   margin-left: -25%;
+    width: 40%;
     height: 60px;
     background-color: #f5f5f5;
     border: none;
@@ -130,7 +130,7 @@ margin-top: 3%;
 
 .Third {
 
-    width: 20%;
+    width: 40%;
     height: 60px;
     background-color: #f5f5f5;
     border: none;
@@ -141,7 +141,6 @@ margin-top: 3%;
     line-height: 60px;
     padding: 3px 60px 0 80px;
 }
-
 
 
 .compare-button {
@@ -212,6 +211,52 @@ footer {
     text-align: center;
     padding: 10px 0;
 }
+.suggestion-dropdown {
+    position: absolute;
+   width: 24%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+     font-family: sans-serif;
+}
+
+/* Adjust the top property to position the suggestion dropdown below the input field */
+.suggestion-dropdown.above {
+    top: -1000px; /* Adjust the value to control the dropdown position */
+}
+
+/* Additional styling for suggestion items */
+.suggestion-item {
+
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+/* Highlight suggestion items on hover */
+.suggestion-item:hover {
+    background-color: #f5f5f5;
+}
+/* Style for the 'line' div, which groups two input fields in the same line */
+.line {
+    display: flex; /* Use flexbox to arrange items in a row */
+    justify-content: space-between; /* Space evenly between the two input fields */
+    margin-bottom: 10px; /* Add spacing between lines */
+}
+
+/* Style for the 'one' and 'two' divs, which contain input fields and suggestion dropdowns */
+.one, .two {
+    flex: 1; /* Equal width for both 'one' and 'two' divs */
+    margin-right: 10px; /* Add spacing between input fields */
+}
+#tablet2Suggestions, #tablet4Suggestions {
+    left: 52.7%; /* Move the suggestion boxes to the left */
+    right: auto; /* Reset any right positioning */
+}
+
+
     </style>
  
 </head>
@@ -239,22 +284,80 @@ footer {
             </nav>
         </div>
         
-  
-        <div class="PSearch">
-            <div class="one">
-             <input  class="First" maxlength="100" type="text" placeholder="Enter name of tablet" >
-             <input class="Second" maxlength="100" type="text" placeholder="Enter name of tablet" >
-         </div> 
-             
-         <div class="two">
-             <input class="Third" maxlength="100" type="text" placeholder="Enter name of tablet" >
-             <input class="Fourth" maxlength="100" type="text" placeholder="Enter name of tablet" >
-         </div>  
-         </div>
+  <div class="PSearch">
+    <div class="line">
+        <div class="one">
+            <input class="First" maxlength="100" type="text" placeholder="Enter name of tablet" id="tablet1">
+            <div class="suggestion-dropdown" id="tablet1Suggestions"></div>
+        </div>
+
+        <div class="one">
+            <input class="Second" maxlength="100" type="text" placeholder="Enter name of tablet" id="tablet2">
+            <div class="suggestion-dropdown" id="tablet2Suggestions"></div>
+        </div>
+    </div>
+
+    <div class="line">
+        <div class="two">
+            <input class="Third" maxlength="100" type="text" placeholder="Enter name of tablet" id="tablet3">
+            <div  class="suggestion-dropdown" id="tablet3Suggestions"></div>
+        </div>
+
+        <div class="two">
+            <input class="Fourth" maxlength="100" type="text" placeholder="Enter name of tablet" id="tablet4">
+         <div class="suggestion-dropdown" id="tablet4Suggestions"></div>
+        </div>
+    </div>
+</div>
          
          <button class="compare-button" onclick="compareTablets()">Compare</button>
 
         <script>
+const inputElements = [
+            document.getElementById('tablet1'),
+            document.getElementById('tablet2'),
+            document.getElementById('tablet3'),
+            document.getElementById('tablet4')
+        ];
+
+        const suggestionDropdowns = [
+            document.getElementById('tablet1Suggestions'),
+            document.getElementById('tablet2Suggestions'),
+            document.getElementById('tablet3Suggestions'),
+            document.getElementById('tablet4Suggestions')
+        ];
+
+        // Event listener for user input in each tablet input field
+        inputElements.forEach((inputElement, index) => {
+            inputElement.addEventListener('input', function() {
+                const userInput = inputElement.value;
+
+                // Make an AJAX request to fetch tablet suggestions
+                fetch(`/get_tablet_suggestions?input=${userInput}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear existing suggestions
+                        suggestionDropdowns[index].innerHTML = '';
+
+                        // Populate the suggestion dropdown with new suggestions
+                        data.suggestions.forEach(suggestion => {
+                            const suggestionItem = document.createElement('div');
+                            suggestionItem.textContent = suggestion;
+                            suggestionItem.classList.add('suggestion-item');
+                            suggestionDropdowns[index].appendChild(suggestionItem);
+
+                            // Add click event listener to populate the input with the selected suggestion
+                            suggestionItem.addEventListener('click', function() {
+                                inputElement.value = suggestion;
+                                suggestionDropdowns[index].innerHTML = ''; // Clear suggestions
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching suggestions:', error);
+                    });
+            });
+        });
 
             function compareTablets() {
     // Get the values of the tablet names entered by the user

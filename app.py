@@ -88,6 +88,17 @@ def compare4laptops():
 def mobile_page():
     return render_template('mob.html')
 
+@app.route('/get_mobile_suggestions')
+def get_mobile_suggestions():
+    user_input = request.args.get('input')
+
+    # Query the database for laptop name suggestions, limiting to 5 results
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT DISTINCT mobile_name FROM mobiles WHERE mobile_name LIKE %s LIMIT 4", ('%' + user_input + '%',))
+    mobile_suggestions = [row[0] for row in cur.fetchall()]
+    cur.close()
+
+    return jsonify({'suggestions': mobile_suggestions})
 @app.route('/compare2M.html')
 def compare2mobiles():
     mobile1_name = request.args.get('mobile1')
@@ -140,7 +151,17 @@ def compare4mobiles():
 def tablet_page():
             return render_template('tab.html')
 
+@app.route('/get_tablet_suggestions')
+def get_tablet_suggestions():
+    user_input = request.args.get('input')
 
+    # Query the database for tablet name suggestions, limiting to 5 results
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT DISTINCT tablet_name FROM tablets WHERE tablet_name LIKE %s LIMIT 4", ('%' + user_input + '%',))
+    tablet_suggestions = [row[0] for row in cur.fetchall()]
+    cur.close()
+
+    return jsonify({'suggestions': tablet_suggestions})
 @app.route('/compare2T.html')
 def compare2tablets():
     tablet1_name = request.args.get('tablet1')

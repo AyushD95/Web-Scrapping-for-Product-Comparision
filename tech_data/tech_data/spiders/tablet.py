@@ -5,7 +5,7 @@ import random
 class TabletSpider(scrapy.Spider):
     name = "tablet"
     start_page = 1
-    max_pages = 800 # Update with the actual number of pages
+    max_pages = 8 # Update with the actual number of pages
 
     def __init__(self):
         self.conn = mysql.connector.connect(
